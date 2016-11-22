@@ -81,7 +81,7 @@ module CurrencyConvertible
       rate = call_xavier_api(original, target)
      #
       # Get the result and round it to 2 decimals
-      result = sprintf("%.2f", amount * rate).to_f
+      result = sprintf("%.5f", amount * rate).to_f
 
       return -(result) if negative
       result
@@ -201,7 +201,7 @@ module CurrencyConvertible
     def cached_amount(original, target, amount)
       if rate = cached_rate(original, target)
         result = (amount * rate).to_f
-        return result = (result * 100).round.to_f / 100
+        return result = (result * 100000).round.to_f / 100000
       end
       nil
     end
